@@ -1,4 +1,3 @@
-
 #include "kcf/kcftracker.hpp"
 #include "eco/eco.hpp"
 #include "eco/parameters.hpp"
@@ -154,6 +153,7 @@ int main(int argc, char **argv)
         key = cvWaitKey(6);
         //******************************** 初始化 Trackers ***********************************
         //ECO —— HOG
+        //攝像頭
         if(key == 'a'){
             //frame.copyTo(frameDraw);
             flag = 1;
@@ -177,6 +177,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //ECO —— HOG
+        //視頻
         if(key == 'f'){
             //frame.copyTo(frameDraw);
             flag = 1;
@@ -200,6 +201,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //ECO —— HOG + CN
+        //攝像頭
         if(key == 's'){
             //frame.copyTo(frameDraw);
             flag = 1;
@@ -223,6 +225,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //ECO —— HOG + CN
+        //視頻
         if(key == 'g'){
             //frame.copyTo(frameDraw);
             flag = 1;
@@ -246,6 +249,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //ECO —— HOG + CN + CNN(GPU)
+        //攝像頭
         else if(key == 'd'){
             //frame.copyTo(frameDraw);
             flag = 1;
@@ -269,6 +273,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //KCF —— HOG + LAB
+        //攝像頭
         else if(key == 'z'){
             //frame.copyTo(frameDraw);
             flag = 2;
@@ -282,6 +287,8 @@ int main(int argc, char **argv)
             pointInterest1.x = pointInterest.x;
             pointInterest1.y = pointInterest.y;
         }
+        //KCF —— HOG + LAB
+        //視頻
         else if(key == 'x'){
             //frame.copyTo(frameDraw);
             flag = 2;
@@ -296,6 +303,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //ECO + KCF
+        //攝像頭
         else if(key == 'q'){
             //frame.copyTo(frameDraw);
             flag = 3;
@@ -322,6 +330,7 @@ int main(int argc, char **argv)
             pointInterest1.y = pointInterest.y;
         }
         //ECO + KCF
+        //視頻
         else if(key == 'w'){
             //frame.copyTo(frameDraw);
             flag = 3;
@@ -366,9 +375,9 @@ int main(int argc, char **argv)
 	    if (okeco){
                 //frame.copyTo(frameDraw);
                 rectangle(frame, ecobbox, Scalar(0, 0, 255), 3);
+
                 pointInterest.x = ecobbox.x + ecobbox.width / 2;
                 pointInterest.y = ecobbox.y + ecobbox.height / 2;
-
                 circle(frame, pointInterest, 2, Scalar(0, 0, 255), 2);
          
                 if(flag2){
@@ -399,6 +408,7 @@ int main(int argc, char **argv)
             if (okkcf){
                 //frame.copyTo(frameDraw);
                 rectangle(frame, kcfbbox, Scalar(0, 255, 0), 3);
+
                 pointInterest.x = kcfbbox.x + kcfbbox.width / 2;
                 pointInterest.y = kcfbbox.y + kcfbbox.height / 2;
                 circle(frame, pointInterest, 2, Scalar(0, 255, 0), 2);
